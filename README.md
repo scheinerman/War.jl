@@ -1,2 +1,2 @@
 # War
-Computer plays the card game war with itself
+Computer plays the card game war with itself.
