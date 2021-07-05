@@ -1,0 +1,4 @@
+name = "War"
+uuid = "38b49244-42de-43b2-ad8c-ea0a6bf2444f"
+authors = ["Ed Scheinerman <ers@jhu.edu>"]
+version = "0.1.0"
