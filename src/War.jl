@@ -126,7 +126,7 @@ function battle(P::Position, used::Set{Card} = Set{Card}())
     end
 
     if VERBOSE
-        println("It's WAR!")
+        println("It's war!\n")
     end
 
     # need at least 4 cards or the game is lost
@@ -162,6 +162,9 @@ end
 function play_war(d::Vector{Card} = deck())
     P = Position(d)
     result = [26]
+    if VERBOSE
+        println(P)
+    end
     while length(P.A) > 0 && length(P.B) > 0
         battle(P)
         if VERBOSE
