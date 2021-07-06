@@ -54,7 +54,7 @@ Then
 julia> length(r)
 250
 ```
-shows that this game had 250 battles. 
+shows that this game had 249 battles. 
 
 ## Generating Statistics
 
