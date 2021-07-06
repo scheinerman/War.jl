@@ -72,3 +72,21 @@ julia> mean(t)
 238.0841
 ```
 
+The file `src/reporting.jl` contains code for generating statistics.
+
+* `war_report(play_war())` gives information about a single play of war.
+* `mean_report(reps)` gives information about multiple plays of war.
+
+
+```julia
+julia> mean_report(1_000_000)
+Progress: 100%|█████████████████████████████████████████| Time: 0:02:27
+Number of games played:           1000000
+Average number of turns:          235.856447
+Average number of single wars:    13.121822
+Average number of double wars:    0.754379
+Average number of triple wars:    0.041873
+Average number of super wars:     0.00214
+```
+
+A "super war" is a quadruple or longer war. 
