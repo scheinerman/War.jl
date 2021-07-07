@@ -2,11 +2,23 @@
 
 This is a demonstration project in which the computer plays the card game war with itself. 
 
+## Playing War
+
 The primary function is `play_war()` which plays one full game. The game is over when one of the player runs out of cards. In this implementation, if there is a war and a player does not hold 4 cards (to play three face down and then one face up), that player loses. Not everyone plays that way.
 
 After each battle, the victor acquires the cards that were played; they are added to the bottom of the victor's pile in random order.
 
 The output of `play_war()` is vector containing the number of cards held by the first player at each turn. That vector necessarily begins with the number 26 and ends with either 0 or 52. The length of the vector is one more than the number of battles to complete the game. In a normal battle, the difference between consecutive terms is ±1; after an ordinary war, the difference is ±5; after a double war, the difference is ±9, and so forth. 
+
+### Variations
+
+The function `play_war` divides a new, shuffled deck into two equal piles for the two players. It can also be invoked in one of the following alternative ways:
+
+* `play_war(d::Vector{Card})` -- Here, `d` is a list of 52 distinct cards; that is, a full deck. The first 26 are given to the player #1 and the remaining cards to player #2.
+* `play_war(d1::Vector{Card}, d2::Vector{Card})` -- Here, `d1` and `d2` are lists of cards that, taken together, constitute a full deck. The cards in `d1` form the pile for player #1 and the cards in `d2` are given to player #2. In this way one may start the game with the players receiving piles of different sizes. 
+
+In either case, if the net input is not 52 distinct cards, a warning is issued but the function goes on, possibly giving nonsensical results. 
+
 
 ## Verbose Output
 

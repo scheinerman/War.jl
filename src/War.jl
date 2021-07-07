@@ -50,9 +50,25 @@ struct Position
     function Position(d::Vector{Card})
         new(make_pile(d[1:26]), make_pile(d[27:52]))
     end
+    function Position(P1::Pile, P2::Pile)
+        new(P1,P2)
+    end
 end
 
 Position() = Position(deck())
+
+function Position(d1::Vector{Card}, d2::Vector{Card})
+    nd = length(d1) + length(d2)
+    S = Set{Card}(d1) ∪ Set{Card}(d2)
+    ns = length(S)
+    if nd != 52 || ns != 52
+        @warn "Improper deck: the there are $nd cards in the two piles and $ns cards in their union. Carrying on anyhow."
+    end
+    A = make_pile(d1)
+    B = make_pile(d2)
+    Position(A,B)
+end
+
 
 function show(io::IO, P::Position)
     println(io, _string(P.A))
@@ -159,9 +175,9 @@ function battle(P::Position, used::Set{Card} = Set{Card}())
     battle(P, used)
 end
 
-function play_war(d::Vector{Card} = deck())
-    P = Position(d)
-    result = [26]
+
+function play_war(P::Position)
+    result = [length(P.A)]
     if VERBOSE
         println(P)
     end
@@ -174,5 +190,17 @@ function play_war(d::Vector{Card} = deck())
     end
     return result
 end
+
+function play_war(d1::Vector{Card}, d2::Vector{Card})
+    P = Position(d1,d2)
+    play_war(P)
+end
+
+function play_war(d::Vector{Card})
+    P = Position(d)
+    play_war(P)
+end
+
+play_war() = play_war(deck())
 
 end  #end of module War
