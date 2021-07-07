@@ -51,7 +51,7 @@ struct Position
         new(make_pile(d[1:26]), make_pile(d[27:52]))
     end
     function Position(P1::Pile, P2::Pile)
-        new(P1,P2)
+        new(P1, P2)
     end
 end
 
@@ -66,7 +66,7 @@ function Position(d1::Vector{Card}, d2::Vector{Card})
     end
     A = make_pile(d1)
     B = make_pile(d2)
-    Position(A,B)
+    Position(A, B)
 end
 
 
@@ -192,7 +192,7 @@ function play_war(P::Position)
 end
 
 function play_war(d1::Vector{Card}, d2::Vector{Card})
-    P = Position(d1,d2)
+    P = Position(d1, d2)
     play_war(P)
 end
 
