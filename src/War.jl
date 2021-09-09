@@ -81,6 +81,11 @@ const Tie = 0
 
 VERBOSE = false
 
+
+"""
+    verbose_war
+Use `verbose_war(true)` to have detailed reporting during a game of war and `verbose_war(false)` to supress that. 
+"""
 function verbose_war(tf::Bool = true)
     global VERBOSE = tf
 end
@@ -201,6 +206,17 @@ function play_war(d::Vector{Card})
     play_war(P)
 end
 
+"""
+    play_war
+Play a game of War. Options:
++ `play_war()`: Play a new game of war with random deck of cards.
++ `play_war(d::Vector{Card})`: Play war with a given deck of cards.
++ `play_war(d1::Vector{Card},d2::Vector{Card})`: Play war in which player 1 gets the cards in `d1` and player 2 gets the cards in `d2`.
+
+The output of `play_war` is vector containing the number of cards held by the first player at each turn. That vector necessarily begins with the number 26 and ends with either 0 or 52. The length of the vector is one more than the number of battles to complete the game. In a normal battle, the difference between consecutive terms is ±1; after an ordinary war, the difference is ±5; after a double war, the difference is ±9, and so forth.
+
+See: `verbose_war`.
+"""
 play_war() = play_war(deck())
 
 end  #end of module War
